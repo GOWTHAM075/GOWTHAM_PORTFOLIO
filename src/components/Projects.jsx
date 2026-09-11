@@ -21,7 +21,7 @@ const projects = [
       "A responsive job portal designed for connecting candidates with job opportunities through a clean and modern interface.",
     tech: ["React", "JavaScript", "Node.js"],
     image: "/projects/job-portal.png",
-    link: "#",
+    link: "https://job-portal-website-gowthamkumar075-2541s-projects.vercel.app/",
     featured: false,
   },
   {
@@ -284,11 +284,7 @@ const Projects = () => {
           ease: "easeInOut",
         }}
       >
-        <g
-          fill="none"
-          stroke="#ff2a2a"
-          strokeWidth="1"
-        >
+        <g fill="none" stroke="#ff2a2a" strokeWidth="1">
           <path d="M500 0 L250 500" />
           <path d="M500 0 L350 500" />
           <path d="M500 0 L450 500" />
@@ -434,9 +430,8 @@ const Projects = () => {
             letterSpacing: "1px",
           }}
         >
-          A selection of digital products,
-          experiments and full-stack applications
-          I've built.
+          A selection of digital products, experiments and full-stack
+          applications I've built.
         </motion.div>
       </div>
 
@@ -527,7 +522,7 @@ const Projects = () => {
                   marginBottom: "12px",
                 }}
               >
-                {project.number} /
+                {project.number}/
               </div>
 
               {/* Category */}
@@ -549,8 +544,7 @@ const Projects = () => {
               <h3
                 style={{
                   margin: 0,
-                  fontSize:
-                    "clamp(30px, 4vw, 55px)",
+                  fontSize: "clamp(30px, 4vw, 55px)",
                   lineHeight: 0.9,
                   fontWeight: 900,
                   letterSpacing: "-3px",
@@ -780,74 +774,75 @@ const Projects = () => {
       {/* =====================================================
           RESPONSIVE
           ===================================================== */}
-<style>
-  {`
-    @media (max-width: 900px) {
-      #projects {
-        padding-left: 6% !important;
-        padding-right: 6% !important;
-      }
 
-      #projects article {
-        grid-template-columns: 1fr !important;
-        gap: 25px !important;
-      }
-    }
+      <style>
+        {`
+          @media (max-width: 900px) {
+            #projects {
+              padding-left: 6% !important;
+              padding-right: 6% !important;
+            }
 
-    @media (max-width: 600px) {
-      #projects {
-        padding-top: 75px !important;
-        padding-bottom: 75px !important;
-      }
+            #projects article {
+              grid-template-columns: 1fr !important;
+              gap: 25px !important;
+            }
+          }
 
-      #projects h2 {
-        font-size: 52px !important;
-        letter-spacing: -4px !important;
-      }
+          @media (max-width: 600px) {
+            #projects {
+              padding-top: 75px !important;
+              padding-bottom: 75px !important;
+            }
 
-      #projects article {
-        padding: 12px !important;
-      }
+            #projects h2 {
+              font-size: 52px !important;
+              letter-spacing: -4px !important;
+            }
 
-      #projects article > div:first-child {
-        height: 200px !important;
-      }
+            #projects article {
+              padding: 12px !important;
+            }
 
-      #projects article > div:last-child {
-        padding: 5px 5px 15px !important;
-      }
+            #projects article > div:first-child {
+              height: 200px !important;
+            }
 
-      #projects article h3 {
-        font-size: 30px !important;
-        letter-spacing: -2px !important;
-      }
+            #projects article > div:last-child {
+              padding: 5px 5px 15px !important;
+            }
 
-      #projects article p {
-        font-size: 13px !important;
-        line-height: 1.7 !important;
-      }
+            #projects article h3 {
+              font-size: 30px !important;
+              letter-spacing: -2px !important;
+            }
 
-      #projects article > div:last-child > div:last-child {
-        margin-top: 20px !important;
-      }
+            #projects article p {
+              font-size: 13px !important;
+              line-height: 1.7 !important;
+            }
 
-      #projects > div:last-child {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-      }
-    }
+            #projects article > div:last-child > div:last-child {
+              margin-top: 20px !important;
+            }
 
-    @media (max-width: 380px) {
-      #projects h2 {
-        font-size: 46px !important;
-      }
+            #projects > div:last-child {
+              flex-direction: column !important;
+              align-items: flex-start !important;
+            }
+          }
 
-      #projects article > div:first-child {
-        height: 180px !important;
-      }
-    }
-  `}
-</style>
+          @media (max-width: 380px) {
+            #projects h2 {
+              font-size: 46px !important;
+            }
+
+            #projects article > div:first-child {
+              height: 180px !important;
+            }
+          }
+        `}
+      </style>
     </section>
   );
 };
