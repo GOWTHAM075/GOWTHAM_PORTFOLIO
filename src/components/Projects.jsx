@@ -13,6 +13,7 @@ const projects = [
     link: "https://dhaanfoods.com",
     featured: true,
   },
+
   {
     number: "02",
     title: "JOB PORTAL",
@@ -24,6 +25,7 @@ const projects = [
     link: "https://job-portal-website-gowthamkumar075-2541s-projects.vercel.app/",
     featured: false,
   },
+
   {
     number: "03",
     title: "PORTFOLIO",
@@ -38,10 +40,32 @@ const projects = [
 ];
 
 const ProjectImage = ({ project }) => {
-  const imageContent = (
+  const handleImageClick = () => {
+    if (!project.link || project.link === "#") return;
+
+    window.open(
+      project.link,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
+  return (
     <motion.div
       whileHover="hover"
       initial="rest"
+      onClick={handleImageClick}
+      role={project.link !== "#" ? "link" : undefined}
+      tabIndex={project.link !== "#" ? 0 : undefined}
+      onKeyDown={(event) => {
+        if (
+          project.link !== "#" &&
+          (event.key === "Enter" || event.key === " ")
+        ) {
+          event.preventDefault();
+          handleImageClick();
+        }
+      }}
       style={{
         position: "relative",
         width: "100%",
@@ -49,10 +73,13 @@ const ProjectImage = ({ project }) => {
         overflow: "hidden",
         background: "#090909",
         border: "1px solid rgba(255,255,255,0.1)",
-        cursor: project.link !== "#" ? "pointer" : "default",
+        cursor:
+          project.link !== "#" ? "pointer" : "default",
+        outline: "none",
       }}
     >
-      {/* Image */}
+      {/* IMAGE */}
+
       <motion.img
         src={project.image}
         alt={project.title}
@@ -74,10 +101,13 @@ const ProjectImage = ({ project }) => {
           objectFit: "cover",
           objectPosition: "center",
           display: "block",
+          pointerEvents: "none",
+          userSelect: "none",
         }}
       />
 
-      {/* Dark overlay */}
+      {/* DARK OVERLAY */}
+
       <motion.div
         variants={{
           rest: {
@@ -98,7 +128,8 @@ const ProjectImage = ({ project }) => {
         }}
       />
 
-      {/* Red scan line */}
+      {/* RED SCAN LINE */}
+
       <motion.div
         variants={{
           rest: {
@@ -120,12 +151,14 @@ const ProjectImage = ({ project }) => {
           width: "100%",
           height: "2px",
           background: "#ff2a2a",
-          boxShadow: "0 0 15px rgba(255,42,42,.8)",
+          boxShadow:
+            "0 0 15px rgba(255,42,42,.8)",
           pointerEvents: "none",
         }}
       />
 
-      {/* Top left corner */}
+      {/* TOP LEFT CORNER */}
+
       <div
         style={{
           position: "absolute",
@@ -139,7 +172,8 @@ const ProjectImage = ({ project }) => {
         }}
       />
 
-      {/* Bottom right corner */}
+      {/* BOTTOM RIGHT CORNER */}
+
       <div
         style={{
           position: "absolute",
@@ -153,7 +187,8 @@ const ProjectImage = ({ project }) => {
         }}
       />
 
-      {/* Project number */}
+      {/* PROJECT NUMBER */}
+
       <div
         style={{
           position: "absolute",
@@ -161,17 +196,20 @@ const ProjectImage = ({ project }) => {
           right: 18,
           padding: "6px 9px",
           background: "rgba(0,0,0,.7)",
-          border: "1px solid rgba(255,42,42,.35)",
+          border:
+            "1px solid rgba(255,42,42,.35)",
           color: "#fff",
           fontFamily: "monospace",
           fontSize: "9px",
           letterSpacing: "2px",
+          pointerEvents: "none",
         }}
       >
         {project.number}
       </div>
 
-      {/* View indicator */}
+      {/* VIEW INDICATOR */}
+
       <motion.div
         variants={{
           rest: {
@@ -197,33 +235,15 @@ const ProjectImage = ({ project }) => {
           fontSize: "8px",
           fontWeight: 700,
           letterSpacing: "1px",
+          pointerEvents: "none",
         }}
       >
-        VIEW PROJECT ↗
+        {project.link !== "#"
+          ? "VIEW PROJECT ↗"
+          : "PROJECT PREVIEW"}
       </motion.div>
     </motion.div>
   );
-
-  {/* Make the entire image clickable */}
-  if (project.link !== "#") {
-    return (
-      <a
-        href={project.link}
-        target="_blank"
-        rel="noreferrer"
-        style={{
-          display: "block",
-          width: "100%",
-          textDecoration: "none",
-        }}
-        aria-label={`View ${project.title} live project`}
-      >
-        {imageContent}
-      </a>
-    );
-  }
-
-  return imageContent;
 };
 
 const Projects = () => {
@@ -239,7 +259,9 @@ const Projects = () => {
         overflow: "hidden",
       }}
     >
-      {/* BACKGROUND GRID */}
+      {/* =====================================================
+          BACKGROUND GRID
+          ===================================================== */}
 
       <div
         style={{
@@ -253,7 +275,9 @@ const Projects = () => {
         }}
       />
 
-      {/* RED GLOW */}
+      {/* =====================================================
+          RED GLOW
+          ===================================================== */}
 
       <motion.div
         animate={{
@@ -278,7 +302,9 @@ const Projects = () => {
         }}
       />
 
-      {/* WEB */}
+      {/* =====================================================
+          WEB
+          ===================================================== */}
 
       <motion.svg
         viewBox="0 0 500 500"
@@ -300,7 +326,11 @@ const Projects = () => {
           ease: "easeInOut",
         }}
       >
-        <g fill="none" stroke="#ff2a2a" strokeWidth="1">
+        <g
+          fill="none"
+          stroke="#ff2a2a"
+          strokeWidth="1"
+        >
           <path d="M500 0 L250 500" />
           <path d="M500 0 L350 500" />
           <path d="M500 0 L450 500" />
@@ -315,7 +345,9 @@ const Projects = () => {
         </g>
       </motion.svg>
 
-      {/* HEADER */}
+      {/* =====================================================
+          HEADER
+          ===================================================== */}
 
       <div
         style={{
@@ -382,7 +414,8 @@ const Projects = () => {
             }}
             style={{
               margin: 0,
-              fontSize: "clamp(55px, 8vw, 100px)",
+              fontSize:
+                "clamp(55px, 8vw, 100px)",
               lineHeight: 0.85,
               fontWeight: 900,
               letterSpacing: "-6px",
@@ -444,12 +477,15 @@ const Projects = () => {
             letterSpacing: "1px",
           }}
         >
-          A selection of digital products, experiments and full-stack
+          A selection of digital products,
+          experiments and full-stack
           applications I've built.
         </motion.div>
       </div>
 
-      {/* PROJECTS */}
+      {/* =====================================================
+          PROJECTS
+          ===================================================== */}
 
       <div
         style={{
@@ -490,8 +526,10 @@ const Projects = () => {
               gap: "45px",
               alignItems: "center",
               padding: "22px",
-              border: "1px solid rgba(255,255,255,0.1)",
-              background: "rgba(255,255,255,0.018)",
+              border:
+                "1px solid rgba(255,255,255,0.1)",
+              background:
+                "rgba(255,255,255,0.018)",
               transition:
                 "border-color .3s ease, background .3s ease",
             }}
@@ -523,7 +561,7 @@ const Projects = () => {
                 padding: "10px 15px 10px 0",
               }}
             >
-              {/* Number */}
+              {/* NUMBER */}
 
               <div
                 style={{
@@ -537,7 +575,7 @@ const Projects = () => {
                 {project.number}/
               </div>
 
-              {/* Category */}
+              {/* CATEGORY */}
 
               <div
                 style={{
@@ -551,12 +589,13 @@ const Projects = () => {
                 {project.category}
               </div>
 
-              {/* Title */}
+              {/* TITLE */}
 
               <h3
                 style={{
                   margin: 0,
-                  fontSize: "clamp(30px, 4vw, 55px)",
+                  fontSize:
+                    "clamp(30px, 4vw, 55px)",
                   lineHeight: 0.9,
                   fontWeight: 900,
                   letterSpacing: "-3px",
@@ -565,7 +604,7 @@ const Projects = () => {
                 {project.title}
               </h3>
 
-              {/* Red line */}
+              {/* RED LINE */}
 
               <div
                 style={{
@@ -577,7 +616,7 @@ const Projects = () => {
                 }}
               />
 
-              {/* Description */}
+              {/* DESCRIPTION */}
 
               <p
                 style={{
@@ -619,7 +658,7 @@ const Projects = () => {
                 ))}
               </div>
 
-              {/* LINK */}
+              {/* LIVE PROJECT */}
 
               <div
                 style={{
@@ -633,7 +672,7 @@ const Projects = () => {
                   <motion.a
                     href={project.link}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     whileHover={{
                       x: 5,
                     }}
@@ -649,6 +688,7 @@ const Projects = () => {
                     }}
                   >
                     LIVE PROJECT
+
                     <span
                       style={{
                         color: "#ff2a2a",
@@ -672,7 +712,7 @@ const Projects = () => {
                 )}
               </div>
 
-              {/* Arrow */}
+              {/* ARROW */}
 
               <motion.div
                 whileHover={{
@@ -692,14 +732,17 @@ const Projects = () => {
                   justifyContent: "center",
                   color: "#ff2a2a",
                   fontSize: "19px",
-                  cursor: "pointer",
+                  cursor:
+                    project.link !== "#"
+                      ? "pointer"
+                      : "default",
                 }}
               >
                 ↗
               </motion.div>
             </div>
 
-            {/* Bottom red line */}
+            {/* BOTTOM RED LINE */}
 
             <motion.div
               initial={{
@@ -729,7 +772,9 @@ const Projects = () => {
         ))}
       </div>
 
-      {/* BOTTOM */}
+      {/* =====================================================
+          BOTTOM
+          ===================================================== */}
 
       <motion.div
         initial={{
@@ -781,7 +826,9 @@ const Projects = () => {
         </a>
       </motion.div>
 
-      {/* RESPONSIVE */}
+      {/* =====================================================
+          RESPONSIVE
+          ===================================================== */}
 
       <style>
         {`
