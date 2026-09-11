@@ -38,7 +38,7 @@ const projects = [
 ];
 
 const ProjectImage = ({ project }) => {
-  return (
+  const imageContent = (
     <motion.div
       whileHover="hover"
       initial="rest"
@@ -49,6 +49,7 @@ const ProjectImage = ({ project }) => {
         overflow: "hidden",
         background: "#090909",
         border: "1px solid rgba(255,255,255,0.1)",
+        cursor: project.link !== "#" ? "pointer" : "default",
       }}
     >
       {/* Image */}
@@ -202,6 +203,27 @@ const ProjectImage = ({ project }) => {
       </motion.div>
     </motion.div>
   );
+
+  {/* Make the entire image clickable */}
+  if (project.link !== "#") {
+    return (
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noreferrer"
+        style={{
+          display: "block",
+          width: "100%",
+          textDecoration: "none",
+        }}
+        aria-label={`View ${project.title} live project`}
+      >
+        {imageContent}
+      </a>
+    );
+  }
+
+  return imageContent;
 };
 
 const Projects = () => {
@@ -217,9 +239,7 @@ const Projects = () => {
         overflow: "hidden",
       }}
     >
-      {/* =====================================================
-          BACKGROUND GRID
-          ===================================================== */}
+      {/* BACKGROUND GRID */}
 
       <div
         style={{
@@ -233,9 +253,7 @@ const Projects = () => {
         }}
       />
 
-      {/* =====================================================
-          RED GLOW
-          ===================================================== */}
+      {/* RED GLOW */}
 
       <motion.div
         animate={{
@@ -260,9 +278,7 @@ const Projects = () => {
         }}
       />
 
-      {/* =====================================================
-          WEB
-          ===================================================== */}
+      {/* WEB */}
 
       <motion.svg
         viewBox="0 0 500 500"
@@ -299,9 +315,7 @@ const Projects = () => {
         </g>
       </motion.svg>
 
-      {/* =====================================================
-          HEADER
-          ===================================================== */}
+      {/* HEADER */}
 
       <div
         style={{
@@ -435,9 +449,7 @@ const Projects = () => {
         </motion.div>
       </div>
 
-      {/* =====================================================
-          PROJECTS
-          ===================================================== */}
+      {/* PROJECTS */}
 
       <div
         style={{
@@ -717,9 +729,7 @@ const Projects = () => {
         ))}
       </div>
 
-      {/* =====================================================
-          BOTTOM
-          ===================================================== */}
+      {/* BOTTOM */}
 
       <motion.div
         initial={{
@@ -771,9 +781,7 @@ const Projects = () => {
         </a>
       </motion.div>
 
-      {/* =====================================================
-          RESPONSIVE
-          ===================================================== */}
+      {/* RESPONSIVE */}
 
       <style>
         {`
